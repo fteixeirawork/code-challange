@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: sporty-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/sporty
+      SPRING_DATASOURCE_USERNAME: sporty
+      SPRING_DATASOURCE_PASSWORD: sporty
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres:16
+    container_name: ticketing-postgres
+    environment:
+      POSTGRES_DB: sporty
+      POSTGRES_USER: sporty
+      POSTGRES_PASSWORD: sporty
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  pgdata:
