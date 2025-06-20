@@ -1,7 +1,7 @@
 package com.sporty.application.service;
 
-import com.sporty.domain.Ticket;
 import com.sporty.adapter.out.persistence.TicketRepository;
+import com.sporty.domain.Ticket;
 import com.sporty.domain.TicketStatus;
 import com.sporty.domain.UserRole;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +25,7 @@ public class TicketService {
     /**
      * Creates a new ticket with the given subject and description
      *
-     * @param subject The ticket's subject
+     * @param subject     The ticket's subject
      * @param description The ticket's detailed description
      * @return The created Ticket entity
      */

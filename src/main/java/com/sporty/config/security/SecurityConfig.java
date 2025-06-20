@@ -13,6 +13,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    private final JweAuthenticationFilter jweAuthenticationFilter;
+
+    public SecurityConfig(JweAuthenticationFilter jweAuthenticationFilter) {
+        this.jweAuthenticationFilter = jweAuthenticationFilter;
+    }
+
     /**
      * Configures the security filter chain for HTTP requests
      *
@@ -23,14 +29,14 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authorizeHttpRequests()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeHttpRequests()
                 .antMatchers("/auth/login").permitAll()
                 .anyRequest().authenticated()
-            .and()
-            .addFilterBefore(new JweAuthenticationFilter(), org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+                .and()
+                .addFilterBefore(jweAuthenticationFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

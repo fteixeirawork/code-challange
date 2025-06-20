@@ -40,7 +40,7 @@ The application comes with two pre-configured users:
 
 1. Get a token by sending a POST request to `/auth/login`:
    ```bash
-   curl -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"username":"john","password":"user"}'
+   curl -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"username":"user","password":"user"}'
    ```
 
 2. Include the token in subsequent requests:
@@ -88,3 +88,14 @@ PostgreSQL database is provisioned automatically with Docker Compose:
 Data persists between container restarts thanks to the Docker volume configuration.
 
 ## AI Usage
+
+This project utilized AI assistance in the following ways:
+
+- Generated comprehensive documentation for all classes
+- Created the initial configuration for the JWE token implementation, which was then refactored
+- Helped improve security practices in the authentication mechanism
+- Generated Docker-related files (Dockerfile and docker-compose.yml
+- Created initial version of this README.md file
+
+Tools used:
+- GitHub Copilot (Claude Sonnet 3.7 model)
