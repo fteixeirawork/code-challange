@@ -88,3 +88,14 @@ PostgreSQL database is provisioned automatically with Docker Compose:
 Data persists between container restarts thanks to the Docker volume configuration.
 
 ## AI Usage
+
+This project utilized AI assistance in the following ways:
+
+- Generated comprehensive documentation for all classes
+- Created the initial configuration for the JWE token implementation, which was then refactored
+- Helped improve security practices in the authentication mechanism
+- Generated Docker-related files (Dockerfile and docker-compose.yml
+- Created initial version of this README.md file
+
+Tools used:
+- GitHub Copilot (Claude Sonnet 3.7 model)

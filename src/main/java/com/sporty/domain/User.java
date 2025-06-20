@@ -1,7 +1,8 @@
 package com.sporty.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Builder;
+import lombok.Data;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,7 +10,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-@Getter
+@Data
+@Builder
 @AllArgsConstructor
 public class User {
     @NotNull

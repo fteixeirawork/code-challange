@@ -5,6 +5,7 @@ import com.sporty.adapter.in.web.schema.TokenSchema;
 import com.sporty.config.security.JweUtil;
 import com.sporty.domain.User;
 import com.sporty.domain.UserRole;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,13 +22,15 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @RestController
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AuthRestController {
 
     private static final Map<String, User> USER_STORE = new ConcurrentHashMap<>();
+    private final JweUtil jweUtil;
 
     static {
-        USER_STORE.put("user", new User(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"), "user", "user", UserRole.USER));
-        USER_STORE.put("agent", new User(UUID.fromString("456e4567-e89b-12d3-a456-426614174000"), "agent", "agent", UserRole.AGENT));
+        USER_STORE.put("user", User.builder().userId(UUID.fromString("123e4567-e89b-12d3-a456-426614174000")).username("user").password("user").role(UserRole.USER).build());
+        USER_STORE.put("agent", User.builder().userId(UUID.fromString("456e4567-e89b-12d3-a456-426614174000")).username("agent").password("agent").role(UserRole.AGENT).build());
     }
 
     /**
@@ -44,7 +47,7 @@ public class AuthRestController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 
-        String token = JweUtil.generateToken(user.getUserId(), user.getRole().toString());
+        String token = jweUtil.generateToken(user.getUserId(), user.getRole().toString());
 
         return ResponseEntity.ok(new TokenSchema(token));
     }
