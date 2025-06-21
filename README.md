@@ -39,13 +39,23 @@ The application comes with two pre-configured users:
 ### Authentication Flow
 
 1. Get a token by sending a POST request to `/auth/login`:
+   **Unix/Linux/macOS:**
    ```bash
    curl -X POST http://localhost:8080/auth/login -H "Content-Type: application/json" -d '{"username":"user","password":"user"}'
    ```
-
+   **Windows Command Prompt:**
+   ```bash
+   curl -X POST http://localhost:8080/auth/login ^ -H "Content-Type: application/json" ^ -d "{\"username\":\"user\",\"password\":\"user\"}"
+   ```
 2. Include the token in subsequent requests:
+
+   **Unix/Linux/macOS:**
    ```bash
    curl -X GET http://localhost:8080/tickets -H "Authorization: Bearer YOUR_TOKEN_HERE"
+   ```
+   **Windows Command Prompt:**
+   ```bash
+   curl -X GET http://localhost:8080/tickets ^ -H "Authorization: Bearer YOUR_TOKEN_HERE"
    ```
 
 ## JWE Authentication Mechanism
