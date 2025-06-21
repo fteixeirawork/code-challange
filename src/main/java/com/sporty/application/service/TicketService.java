@@ -33,7 +33,6 @@ public class TicketService {
         return ticketRepository.save(Ticket.builder()
                 .subject(subject)
                 .description(description)
-                .status(TicketStatus.OPEN)
                 .build());
     }
 
