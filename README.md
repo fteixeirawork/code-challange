@@ -1,4 +1,4 @@
-# Sporty Challange API
+# Sporty Challenge API
 
 A Spring Boot ticketing application with JWT-based authentication using JWE (JSON Web Encryption).
 

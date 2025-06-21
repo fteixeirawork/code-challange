@@ -5,13 +5,13 @@
          https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>code-challange</artifactId>
+    <groupId>com.sporty</groupId>
+    <artifactId>code-challenge</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>code-challange</name>
-    <description>Sporty code challange</description>
+    <name>code-challenge</name>
+    <description>Sporty code challenge</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
