@@ -24,14 +24,13 @@ public class Ticket {
     @Id
     @GeneratedValue
     @NotNull
-    private UUID ticketId;
+    private UUID id;
     @NotBlank
     @Length(max = 255)
     private String subject;
     @NotBlank
     @Length(max = 2000)
     private String description;
-    @NotNull
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
     @NotNull
