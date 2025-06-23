@@ -30,6 +30,12 @@ public class TicketRestController {
     public ResponseEntity<Ticket> createTicket(@Valid @RequestBody TicketSchema ticketSchema) {
         Ticket ticket = ticketService.createTicket(ticketSchema.subject(), ticketSchema.description());
 
+        /*
+        * Should be like the following if there was a getById endpoint:
+        * return ResponseEntity.created(URI.create("/tickets/" + ticket.getId())).body(ticket);
+        * However, since we don't have a getById endpoint in this example, we return
+        * the created ticket directly.
+        * */
         return ResponseEntity.ok(ticket);
     }
 
